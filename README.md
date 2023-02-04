@@ -12,4 +12,6 @@ tic-tac-toe with your friend or a bot.
 
 ### User Stories
 - As a user, I want to see a leaderboard 
-- As a user, I want to visualize my wins and loss
+- As a user, I want to add my wins to a win counter
+- As a user, I want to see my daily win loss ratio as a graph
+- As a user, I want to have an account for the game
