@@ -45,10 +45,27 @@ public class TicTacToe {
         }
     }
 
+    public void checkStatus() {
+        if (checkRows()) {
+            System.out.println("Rows");
+        }
+        if (checkColumns()) {
+            System.out.println("Columns");
+        }
+    }
 
     private boolean checkRows() {
         for (int i = 0; i < ROW; i++) {
             if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkColumns() {
+        for (int i = 0; i < COLUMN; i++) {
+            if ((board[0][i] == board[1][i]) && (board[1][i] == board[2][i])) {
                 return true;
             }
         }
