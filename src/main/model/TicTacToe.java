@@ -46,6 +46,14 @@ public class TicTacToe {
     }
 
 
+    private boolean checkRows() {
+        for (int i = 0; i < ROW; i++) {
+            if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2])) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

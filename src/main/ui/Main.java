@@ -12,5 +12,8 @@ public class Main {
         game.printBoard();
         game.changeBoard(7, "O");
         game.printBoard();
+        game.changeBoard(0, "X");
+        game.changeBoard(1, "X");
+        game.changeBoard(2, "X");
     }
 }
