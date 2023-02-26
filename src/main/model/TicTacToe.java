@@ -53,21 +53,22 @@ public class TicTacToe {
     }
 
     // EFFECT: checks the status of the game
-    //         prints "Rows" if a row is completed
-    //         prints "Columns" if a column is completed
-    //         prints "Diagonal" if a diagonal is completed
-    //         prints "game have not ended"" if the game have not ended
-    public void checkStatus() {
+    //         return "row" if a row is completed
+    //         return "column" if a column is completed
+    //         return "diagonal" if a diagonal is completed
+    //         return "It is a tie" if the game is a tie
+    //         return "" if the game have not ended
+    public String checkStatus() {
         if (checkRows()) {
-            System.out.println("Rows");
+            return "row";
         } else if (checkColumns()) {
-            System.out.println("Columns");
+            return "column";
         } else if (checkDiagonal()) {
-            System.out.println("Diagonal");
+            return "diagonal";
         } else if (checkTie()) {
-            System.out.println("It is a tie");
+            return "It is a tie";
         } else {
-            System.out.println("game have not ended");
+            return "";
         }
 
     }

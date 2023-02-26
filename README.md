@@ -11,7 +11,7 @@ As someone who enjoys simple games, I love playing tic-tac-toe with friends. Thi
 tic-tac-toe with your friend or a bot. 
 
 ### User Stories
-- As a user, I want to see a leaderboard 
-- As a user, I want to add my wins to a win counter
-- As a user, I want to see my daily win loss ratio as a graph
-- As a user, I want to have an account for the game
+- As a user, I want to see how many games I have won
+- As a user, I want to add my moves to the tic-tac-toe game
+- As a user, I want to see a visual of the tic-tac-toe game
+- As a user, I want to add my wins to a win loss record
