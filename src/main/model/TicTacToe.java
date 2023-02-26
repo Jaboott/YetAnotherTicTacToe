@@ -49,11 +49,7 @@ public class TicTacToe {
     // EFFECT: sets a specified index on the 2d array to a specific value
     //         if the given slot is empty
     public void changeBoard(int index, String value) {
-        if (board[index / ROW][(index % COLUMN)].equals("")) {
-            board[index / ROW][(index % COLUMN)] = value;
-        } else {
-            System.out.println("The given slot is already taken!");
-        }
+        board[index / ROW][(index % COLUMN)] = value;
     }
 
     // EFFECT: checks the status of the game
@@ -102,5 +98,8 @@ public class TicTacToe {
         return result;
     }
 
+    public boolean slotTaken(int index) {
+        return board[index / ROW][(index % COLUMN)] != "";
+    }
 
 }
