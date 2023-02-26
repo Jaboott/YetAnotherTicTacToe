@@ -64,6 +64,8 @@ public class TicTacToe {
             System.out.println("Columns");
         } else if (checkDiagonal()) {
             System.out.println("Diagonal");
+        } else if (checkTie()) {
+            System.out.println("It is a tie");
         } else {
             System.out.println("game have not ended");
         }
@@ -93,9 +95,26 @@ public class TicTacToe {
     // EFFECTS: returns true if a diagonal is completed return false otherwise
     private boolean checkDiagonal() {
         boolean result =
-                (board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals(""))
-                || (board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]) && !board[1][1].equals(""));
+                (board[0][0].equals(board[1][1])
+                        && board[1][1].equals(board[2][2])
+                        && !board[1][1].equals(""))
+                        || (board[0][2].equals(board[1][1])
+                        && board[1][1].equals(board[2][0])
+                        && !board[1][1].equals(""));
         return result;
+    }
+
+
+    // EFFECTS: returns true if not every element on the list is "" false otherwise
+    private boolean checkTie() {
+        for (int i = 0; i < ROW; i++) {
+            for (int j = 0; j < COLUMN; j++) {
+                if (board[i][j] == "") {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean slotTaken(int index) {
