@@ -7,10 +7,9 @@ import model.TicTacToe;
 
 public class TicTacToeApp {
 
-    private Scanner input;
     private TicTacToe game;
     private static final String PLAYER1 = "X";
-    private static final String  PLAYER2 = "O";
+    private static final String PLAYER2 = "O";
 
     // EFFECTS: runs the tic-tac-toe app
     public TicTacToeApp() {
@@ -18,23 +17,27 @@ public class TicTacToeApp {
     }
 
     public void runTicTacToe() {
-        int firstPlayer = chooseFirstPlayer();
+        int currPlayer = chooseFirstPlayer();
         String symbol = "";
-        input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         boolean gameRunning = true;
 
         init();
         game.printBoard();
-        System.out.println("Player" + firstPlayer + " starts first");
+        System.out.println("Player" + currPlayer + " starts first");
 
         while (gameRunning) {
-            printInstructions(firstPlayer);
+            printInstructions(currPlayer);
             int currMove = inputNextMove();
-            symbol = changeSymbol(firstPlayer);
+            symbol = changeSymbol(currPlayer);
 
             if (checkInput(currMove)) {
                 game.changeBoard(currMove, symbol);
             }
+
+            game.printBoard();
+            currPlayer = changePlayer(currPlayer);
+
         }
     }
 
@@ -66,7 +69,7 @@ public class TicTacToeApp {
 
     private boolean checkInput(int input) {
         if (input > 8 || input < 0 || game.slotTaken(input)) {
-            System.out.println("Not a valid input try again");
+            System.out.println("Input not in range or taken pls try again");
             return false;
         }
         return true;
@@ -74,10 +77,13 @@ public class TicTacToeApp {
 
     private int inputNextMove() {
         int playerInput = 0;
+        Scanner input = new Scanner(System.in);
+
         try {
-            playerInput = this.input.nextInt();
+            playerInput = input.nextInt();
         } catch (Exception e) {
             System.out.println("Not a valid input try again");
+            inputNextMove();
         }
         return playerInput;
     }
@@ -87,6 +93,13 @@ public class TicTacToeApp {
             return PLAYER1;
         }
         return PLAYER2;
+    }
+
+    private int changePlayer(int player) {
+        if (player == 1) {
+            return 2;
+        }
+        return 1;
     }
 
 }
