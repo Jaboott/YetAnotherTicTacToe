@@ -10,24 +10,20 @@ public class TicTacToeApp {
     private TicTacToe game;
     private static final String PLAYER1 = "X";
     private static final String PLAYER2 = "O";
-
-    // EFFECTS: runs the tic-tac-toe app
-    public TicTacToeApp() {
-        runTicTacToe();
-    }
+    private int p1Wins = 0;
+    private int p2Wins = 0;
 
     // MODIFY: this
     // EFFECTS: runs the game
-    public void runTicTacToe() {
+    public int runTicTacToe() {
         int currPlayer = chooseFirstPlayer();
         String symbol = "";
-        boolean gameRunning = true;
 
         init();
         game.printBoard();
         System.out.println("Player" + currPlayer + " starts first");
 
-        while (gameRunning) {
+        while (true) {
             printInstructions(currPlayer);
             int currMove = inputNextMove();
             symbol = changeSymbol(currPlayer);
@@ -36,7 +32,10 @@ public class TicTacToeApp {
                 game.changeBoard(currMove, symbol);
                 game.printBoard();
                 finalMessage(currPlayer);
-                gameRunning = checkEnd();
+
+                if (!checkEnd()) {
+                    return currPlayer;
+                }
                 currPlayer = changePlayer(currPlayer);
             }
 
