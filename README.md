@@ -12,6 +12,7 @@ tic-tac-toe with your friend or a bot.
 
 ### User Stories
 - As a user, I want to see how many games I have won and lost
-- As a user, I want to add my moves to the tic-tac-toe game
+- As a user, I want to have a menu to select what I want to do 
+  - play game, view game history, or the win and lost record
 - As a user, I want to see a visual of the tic-tac-toe game
-- As a user, I want to add my game history to a list of past games
+- As a user, I want to add my game history to a list of past games played
