@@ -159,4 +159,7 @@ public class TicTacToeApp {
         }
     }
 
+    public TicTacToe getGame() {
+        return game;
+    }
 }
