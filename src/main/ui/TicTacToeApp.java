@@ -15,7 +15,7 @@ public class TicTacToeApp {
 
     // MODIFY: this
     // EFFECTS: runs the game
-    public int runTicTacToe() {
+    public String runTicTacToe() {
         int currPlayer = chooseFirstPlayer();
         String symbol = "";
 
@@ -34,7 +34,7 @@ public class TicTacToeApp {
                 finalMessage(currPlayer);
 
                 if (!checkEnd()) {
-                    return currPlayer;
+                    return finalMessage(currPlayer);
                 }
                 currPlayer = changePlayer(currPlayer);
             }
@@ -115,15 +115,18 @@ public class TicTacToeApp {
 
     // REQUIRE: currPlayer needs to be either 1 or 2
     // EFFECTS: outputs message for given game status
-    private void finalMessage(int currPlayer) {
+    private String finalMessage(int currPlayer) {
         String message = game.checkStatus();
 
         if (message.equals("It is a tie")) {
             System.out.println("The players tied, no winner");
+            return "The players tied, no winner";
         } else if (message.equals("")) {
             System.out.println("");
+            return "";
         } else {
             System.out.println("Player" + currPlayer + " have won by " + message);
+            return "Player" + currPlayer + " have won by " + message;
         }
     }
 
