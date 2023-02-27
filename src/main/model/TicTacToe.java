@@ -1,5 +1,6 @@
 package model;
 
+// Represent the basic functions and parameters for tic-tac-toe
 public class TicTacToe {
 
     private static final int ROW = 3;

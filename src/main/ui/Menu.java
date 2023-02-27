@@ -3,6 +3,7 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Represents the user interaction for the menu.
 public class Menu {
 
     private int p1Wins = 0;

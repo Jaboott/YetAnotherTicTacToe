@@ -5,6 +5,7 @@ import java.util.Random;
 
 import model.TicTacToe;
 
+// Represents the user interaction functions of the tic-tac-toe game
 public class TicTacToeApp {
 
     private TicTacToe game;
