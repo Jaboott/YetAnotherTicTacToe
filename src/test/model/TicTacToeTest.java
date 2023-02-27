@@ -25,9 +25,15 @@ class TicTacToeTest {
         game.changeBoard(0, "X");
         game.changeBoard(1, "X");
         game.changeBoard(2, "X");
+
         assertEquals("X", game.getSlot(0,0));
         assertEquals("X", game.getSlot(0,1));
         assertEquals("X", game.getSlot(0,2));
+
+        assertTrue(game.slotTaken(0));
+        assertTrue(game.slotTaken(1));
+        assertTrue(game.slotTaken(2));
+
         assertEquals("row", game.checkStatus());
     }
 
@@ -43,13 +49,24 @@ class TicTacToeTest {
     }
 
     @Test
-    void checkStatusDiagonalTest() {
+    void checkStatusDiagonal1Test() {
         game.changeBoard(0, "O");
         game.changeBoard(4, "O");
         game.changeBoard(8, "O");
         assertEquals("O", game.getSlot(0,0));
         assertEquals("O", game.getSlot(1,1));
         assertEquals("O", game.getSlot(2,2));
+        assertEquals("diagonal", game.checkStatus());
+    }
+
+    @Test
+    void checkStatusDiagonal2Test() {
+        game.changeBoard(2, "X");
+        game.changeBoard(4, "X");
+        game.changeBoard(6, "X");
+        assertEquals("X", game.getSlot(0,2));
+        assertEquals("X", game.getSlot(1,1));
+        assertEquals("X", game.getSlot(2,0));
         assertEquals("diagonal", game.checkStatus());
     }
 
