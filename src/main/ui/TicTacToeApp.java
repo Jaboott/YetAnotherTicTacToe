@@ -20,7 +20,7 @@ public class TicTacToeApp {
         String symbol = "";
 
         init();
-        game.printBoard();
+        printBoard(game);
         System.out.println("Player" + currPlayer + " starts first");
 
         while (true) {
@@ -30,8 +30,7 @@ public class TicTacToeApp {
 
             if (checkInput(currMove)) {
                 game.changeBoard(currMove, symbol);
-                game.printBoard();
-                finalMessage(currPlayer);
+                printBoard(game);
 
                 if (!checkEnd()) {
                     return finalMessage(currPlayer);
@@ -39,6 +38,24 @@ public class TicTacToeApp {
                 currPlayer = changePlayer(currPlayer);
             }
 
+        }
+    }
+
+    // EFFECT: prints the 2d array with spaces in between each index
+    //         prints number between 0-8 if slot is not taken
+    private void printBoard(TicTacToe game) {
+        int count = 0;
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (game.getSlot(i,j).equals("")) {
+                    System.out.print(count + "     ");
+                } else {
+                    System.out.print(game.getSlot(i,j) + "     ");
+                }
+                count++;
+            }
+            System.out.println("\n");
         }
     }
 

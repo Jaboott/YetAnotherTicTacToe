@@ -25,25 +25,6 @@ public class TicTacToe {
         }
     }
 
-    // MODIFY: this
-    // EFFECT: prints the 2d array with spaces in between each index
-    //         prints number between 0-8 if slot is not taken
-    public void printBoard() {
-        int count = 0;
-        System.out.println("\n\n\n\n\n\n\n\n\n\n");
-        for (int i = 0; i < ROW; i++) {
-            for (int j = 0; j < COLUMN; j++) {
-                if (board[i][j].equals("")) {
-                    System.out.print(count + "     ");
-                } else {
-                    System.out.print(board[i][j] + "     ");
-                }
-                count++;
-            }
-            System.out.println("\n");
-        }
-    }
-
     // REQUIRE: index is between 0 - 8, value is either "X" or "O"
     // MODIFY: this
     // EFFECT: sets a specified index on the 2d array to a specific value
@@ -118,8 +99,16 @@ public class TicTacToe {
         return true;
     }
 
+    // REQUIRE: index is a valid index on the 2d array
+    // EFFECTS: return true if the given index is taken false otherwise
     public boolean slotTaken(int index) {
         return board[index / ROW][(index % COLUMN)] != "";
+    }
+
+    // REQUIRE: row and column is within the parameter ROW and COLUMN
+    // EFFECTS: get the string in 2d array of given the row and column
+    public String getSlot(int row, int column) {
+        return board[row][column];
     }
 
 }
