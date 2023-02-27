@@ -86,11 +86,14 @@ public class TicTacToeApp {
         int playerInput = 0;
         Scanner input = new Scanner(System.in);
 
-        try {
-            playerInput = input.nextInt();
-        } catch (Exception e) {
-            System.out.println("Not a valid input try again");
-            inputNextMove();
+        while (true) {
+            try {
+                playerInput = input.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Not a valid input try again");
+                input.nextLine();
+            }
         }
         return playerInput;
     }
