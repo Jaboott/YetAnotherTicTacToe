@@ -16,3 +16,7 @@ tic-tac-toe with your friend or a bot.
   - play game, view game history, or the win and lost record
 - As a user, I want to see a visual of the tic-tac-toe game
 - As a user, I want to add my game history to a list of past games played
+- As a user, when I select the quit option from the menu, I want to be given the option to save my win-loss record and
+previous games
+- As a user, when I start the application, I want to be given the option to load my previous games and my win-loss 
+record
