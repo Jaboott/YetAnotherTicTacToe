@@ -37,6 +37,7 @@ public class Menu {
             } else if (playerInput == 3) {
                 displayRecord();
             } else if (playerInput == 4) {
+                displaySaveMessage();
                 break;
             } else {
                 System.out.println("Invalid input please try again");
@@ -44,15 +45,21 @@ public class Menu {
         }
     }
 
-    // EFFECTS: prints every element in the list history
-    private void displayRecord() {
-        System.out.println("The history of the games:");
-        for (int i = 1; i <= history.messages().size(); i++) {
-            System.out.println("Game" + i + ":");
-            printBoard(history.boards().get(i - 1));
-            System.out.println(history.messages().get(i - 1));
-            System.out.println("\n\n");
-        }
+    // EFFECTS: prints the instructions
+    private void displayMenu() {
+        System.out.println("\n");
+        System.out.println("Welcome to Crosses & Circles: The Ultimate Battle");
+        System.out.println("Type 1 to see the current win-loss record");
+        System.out.println("Type 2 to play the tic-tac-toe game");
+        System.out.println("Type 3 to see the game history");
+        System.out.println("Type 4 to stop the program");
+    }
+
+    // EFFECTS: prints the win loss
+    private void displayWinLoss() {
+        System.out.println("\n");
+        System.out.println("Player1 have won " + countWins1() + " and lost " + countWins2() + " times.");
+        System.out.println("Player2 have won " + countWins2() + " and lost " + countWins1() + " times.");
     }
 
     // REQUIRE: inputted message have to be the specified game messages
@@ -75,6 +82,17 @@ public class Menu {
         history.addGame(gameStats);
     }
 
+    // EFFECTS: prints every element in the list history
+    private void displayRecord() {
+        System.out.println("The history of the games:");
+        for (int i = 1; i <= history.messages().size(); i++) {
+            System.out.println("Game" + i + ":");
+            printBoard(history.boards().get(i - 1));
+            System.out.println(history.messages().get(i - 1));
+            System.out.println("\n\n");
+        }
+    }
+
     // EFFECT: prints the 2d array with spaces in between each index
     //         prints number between 0-8 if slot is not taken
     private void printBoard(TicTacToe game) {
@@ -92,25 +110,8 @@ public class Menu {
         }
     }
 
-    // EFFECTS: prints the win loss
-    private void displayWinLoss() {
-        System.out.println("\n");
-        System.out.println("Player1 have won " + countWins1() + " and lost " + countWins2() + " times.");
-        System.out.println("Player2 have won " + countWins2() + " and lost " + countWins1() + " times.");
-    }
-
-    // EFFECTS: prints the instructions
-    public void displayMenu() {
-        System.out.println("\n");
-        System.out.println("Welcome to Crosses & Circles: The Ultimate Battle");
-        System.out.println("Type 1 to see the current win-loss record");
-        System.out.println("Type 2 to play the tic-tac-toe game");
-        System.out.println("Type 3 to see the game history");
-        System.out.println("Type 4 to stop the program");
-    }
-
     // EFFECTS: counts the number of times 1 appear in the list
-    public Integer countWins1() {
+    private Integer countWins1() {
         int count = 0;
         for (int i : history.winners()) {
             if (i == 1) {
@@ -121,7 +122,7 @@ public class Menu {
     }
 
     // EFFECTS: counts the number of times 2 appear in the list
-    public Integer countWins2() {
+    private Integer countWins2() {
         int count = 0;
         for (int i : history.winners()) {
             if (i == 2) {
@@ -129,5 +130,13 @@ public class Menu {
             }
         }
         return count;
+    }
+
+    private void displaySaveMessage() {
+        Scanner input = new Scanner(System.in);
+        String playerInput;
+        System.out.println("Type y to save the game history and win-loss record");
+        playerInput = input.nextLine();
+
     }
 }
