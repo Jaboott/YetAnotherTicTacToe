@@ -4,7 +4,6 @@ import model.Game;
 import model.GameHistory;
 import model.TicTacToe;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Represents the user interaction for the menu.

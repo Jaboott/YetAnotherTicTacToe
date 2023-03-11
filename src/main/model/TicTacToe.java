@@ -77,14 +77,12 @@ public class TicTacToe {
 
     // EFFECTS: returns true if a diagonal is completed return false otherwise
     private boolean checkDiagonal() {
-        boolean result =
-                (board[0][0].equals(board[1][1])
-                        && board[1][1].equals(board[2][2])
-                        && !board[1][1].equals(""))
-                        || (board[0][2].equals(board[1][1])
-                        && board[1][1].equals(board[2][0])
-                        && !board[1][1].equals(""));
-        return result;
+        return (board[0][0].equals(board[1][1])
+                && board[1][1].equals(board[2][2])
+                && !board[1][1].equals(""))
+                || (board[0][2].equals(board[1][1])
+                && board[1][1].equals(board[2][0])
+                && !board[1][1].equals(""));
     }
 
 
@@ -92,7 +90,7 @@ public class TicTacToe {
     private boolean checkTie() {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COLUMN; j++) {
-                if (board[i][j] == "") {
+                if ((board[i][j]).equals("")) {
                     return false;
                 }
             }
@@ -103,7 +101,7 @@ public class TicTacToe {
     // REQUIRE: index is a valid index on the 2d array
     // EFFECTS: return true if the given index is taken false otherwise
     public boolean slotTaken(int index) {
-        return board[index / ROW][(index % COLUMN)] != "";
+        return !board[index / ROW][(index % COLUMN)].equals("");
     }
 
     // REQUIRE: row and column is within the parameter ROW and COLUMN

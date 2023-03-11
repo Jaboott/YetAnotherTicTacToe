@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameHistory {
-    List<Game> history = new ArrayList<>();
+    private List<Game> history = new ArrayList<>();
 
     // MODIFY: this
     // EFFECTS: adds game to history

@@ -11,14 +11,12 @@ public class TicTacToeApp {
     private TicTacToe game;
     private static final String PLAYER1 = "X";
     private static final String PLAYER2 = "O";
-    private int p1Wins = 0;
-    private int p2Wins = 0;
 
     // MODIFY: this
     // EFFECTS: runs the game
     public String runTicTacToe() {
         int currPlayer = chooseFirstPlayer();
-        String symbol = "";
+        String symbol;
 
         init();
         printBoard(game);
@@ -100,7 +98,7 @@ public class TicTacToeApp {
 
     // EFFECTS: takes user input until user inputs a valid input
     private int inputNextMove() {
-        int playerInput = 0;
+        int playerInput;
         Scanner input = new Scanner(System.in);
 
         while (true) {
@@ -140,7 +138,6 @@ public class TicTacToeApp {
             System.out.println("The players tied, no winner");
             return "The players tied, no winner";
         } else if (message.equals("")) {
-            System.out.println("");
             return "";
         } else {
             System.out.println("Player" + currPlayer + " have won by " + message);
@@ -152,11 +149,7 @@ public class TicTacToeApp {
     private boolean checkEnd() {
         String message = game.checkStatus();
 
-        if (message.equals("")) {
-            return true;
-        } else {
-            return false;
-        }
+        return message.equals("");
     }
 
     public TicTacToe getGame() {
