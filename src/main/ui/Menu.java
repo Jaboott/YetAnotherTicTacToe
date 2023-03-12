@@ -13,7 +13,7 @@ import java.util.Scanner;
 // Represents the user interaction for the menu.
 public class Menu {
 
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/gameHistory.json";
     private GameHistory history = new GameHistory();
     private TicTacToeApp game;
     private Game gameStats;

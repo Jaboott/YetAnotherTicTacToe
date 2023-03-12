@@ -63,8 +63,4 @@ public class GameHistory {
         return jsonArray;
     }
 
-
-
-
-
 }
