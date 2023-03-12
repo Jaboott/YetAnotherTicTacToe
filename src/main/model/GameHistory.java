@@ -1,10 +1,17 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameHistory {
     private List<Game> history = new ArrayList<>();
+    private List<String> finalMessages;
+    private List<Integer> winnerCount;
+    private List<TicTacToe> pastBoards;
+
 
     // MODIFY: this
     // EFFECTS: adds game to history
@@ -38,6 +45,15 @@ public class GameHistory {
         }
         return pastBoards;
     }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("messages", finalMessages);
+        json.put("winners", winnerCount);
+        json.put("boards", pastBoards);
+        return json;
+
+
 
 
 }
