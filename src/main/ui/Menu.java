@@ -3,21 +3,29 @@ package ui;
 import model.Game;
 import model.GameHistory;
 import model.TicTacToe;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Represents the user interaction for the menu.
 public class Menu {
 
+    private static final String JSON_STORE = "./data/workroom.json";
     private GameHistory history = new GameHistory();
     private TicTacToeApp game;
     private Game gameStats;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // initialize game object and runs the menu
     public Menu() {
         game = new TicTacToeApp();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runMenu();
-
     }
 
     // MODIFY: this
@@ -39,6 +47,8 @@ public class Menu {
             } else if (playerInput == 4) {
                 displaySaveMessage();
                 break;
+            } else if (playerInput == 5) {
+                loadGameHistory();
             } else {
                 System.out.println("Invalid input please try again");
             }
@@ -53,6 +63,7 @@ public class Menu {
         System.out.println("Type 2 to play the tic-tac-toe game");
         System.out.println("Type 3 to see the game history");
         System.out.println("Type 4 to stop the program");
+        System.out.println("Type 5 to load previous games and win-loss");
     }
 
     // EFFECTS: prints the win loss
@@ -132,13 +143,37 @@ public class Menu {
         return count;
     }
 
+    // EFFECTS: Give the user a chance to save the games, y to save, anything else to quit
     private void displaySaveMessage() {
         Scanner input = new Scanner(System.in);
         String playerInput;
         System.out.println("Type y to save the game history and win-loss record");
         playerInput = input.nextLine();
         if (playerInput.equals("y")) {
+            saveGameHistory();
+        }
+    }
 
+    // EFFECTS: saves the GameHistory to file
+    private void saveGameHistory() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(history);
+            jsonWriter.close();
+            System.out.println("Saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadGameHistory() {
+        try {
+            history = jsonReader.read();
+            System.out.println("Loaded " + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

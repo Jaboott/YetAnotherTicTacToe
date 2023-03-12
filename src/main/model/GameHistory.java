@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameHistory {
-    private List<Game> history = new ArrayList<>();
-    private List<String> finalMessages;
-    private List<Integer> winnerCount;
-    private List<TicTacToe> pastBoards;
+    private List<Game> history;
 
+    public GameHistory() {
+        history = new ArrayList<>();
+    }
 
     // MODIFY: this
     // EFFECTS: adds game to history
@@ -37,7 +37,7 @@ public class GameHistory {
         return winnerCount;
     }
 
-    // // EFFECTS: returns the list of TicTacToe that represents board in the Game class
+    // EFFECTS: returns the list of TicTacToe that represents board in the Game class
     public List<TicTacToe> boards() {
         List<TicTacToe> pastBoards = new ArrayList<>();
         for (Game i : history) {
@@ -48,10 +48,21 @@ public class GameHistory {
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("messages", finalMessages);
-        json.put("winners", winnerCount);
-        json.put("boards", pastBoards);
+        json.put("games", gamesToJson());
         return json;
+    }
+
+    // returns items in the history as JSON array
+    private JSONArray gamesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Game t : history) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
+    }
+
 
 
 

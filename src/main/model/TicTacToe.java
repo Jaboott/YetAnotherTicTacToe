@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // Represent the basic functions and parameters for tic-tac-toe
 public class TicTacToe {
 
@@ -108,6 +111,17 @@ public class TicTacToe {
     // EFFECTS: get the string in 2d array of given the row and column
     public String getSlot(int row, int column) {
         return board[row][column];
+    }
+
+    // EFFECTS: returns items in the 2d array as many JSON Object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                json.put(String.valueOf((i * 3 + j)),board[i][j]);
+            }
+        }
+        return json;
     }
 
 }

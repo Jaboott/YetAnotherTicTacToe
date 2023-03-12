@@ -1,10 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
 public class Game {
     private TicTacToe board;
     private int winner;
     private String message;
-    
 
     public int getWinner() {
         return winner;
@@ -29,4 +30,14 @@ public class Game {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("board", board.toJson());
+        json.put("winner", winner);
+        json.put("message", message);
+        return json;
+    }
+
+
 }
