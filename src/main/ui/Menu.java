@@ -137,6 +137,8 @@ public class Menu {
         String playerInput;
         System.out.println("Type y to save the game history and win-loss record");
         playerInput = input.nextLine();
+        if (playerInput.equals("y")) {
 
+        }
     }
 }
