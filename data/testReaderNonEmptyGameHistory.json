@@ -1,0 +1,32 @@
+{"games": [
+    {
+        "winner": 1,
+        "message": "Player1 have won by diagonal",
+        "board": {
+            "0": "X",
+            "1": "O",
+            "2": "X",
+            "3": "O",
+            "4": "X",
+            "5": "O",
+            "6": "X",
+            "7": "",
+            "8": ""
+        }
+    },
+    {
+        "winner": 2,
+        "message": "Player2 have won by column",
+        "board": {
+            "0": "O",
+            "1": "X",
+            "2": "",
+            "3": "O",
+            "4": "X",
+            "5": "",
+            "6": "O",
+            "7": "",
+            "8": ""
+        }
+    }
+]}

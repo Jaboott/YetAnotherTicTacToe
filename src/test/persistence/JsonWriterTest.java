@@ -28,12 +28,12 @@ public class JsonWriterTest {
     void testWriterEmptyGameHistory() {
         try {
             GameHistory gh = new GameHistory();
-            JsonWriter writer = new JsonWriter("./data/gameHistory.json");
+            JsonWriter writer = new JsonWriter("./data/testGameHistory.json");
             writer.open();
             writer.write(gh);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/gameHistory.json");
+            JsonReader reader = new JsonReader("./data/testGameHistory.json");
             gh = reader.read();
             assertEquals(0, gh.messages().size());
             assertEquals(0, gh.boards().size());
@@ -55,12 +55,12 @@ public class JsonWriterTest {
             game.setBoard(ticTacToe);
             gh.addGame(game);
 
-            JsonWriter writer = new JsonWriter("./data/gameHistory.json");
+            JsonWriter writer = new JsonWriter("./data/testGameHistory.json");
             writer.open();
             writer.write(gh);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/gameHistory.json");
+            JsonReader reader = new JsonReader("./data/testGameHistory.json");
             gh = reader.read();
             assertEquals(1, gh.messages().size());
             assertEquals(1, gh.boards().size());
@@ -95,12 +95,12 @@ public class JsonWriterTest {
             gh.addGame(game1);
             gh.addGame(game2);
 
-            JsonWriter writer = new JsonWriter("./data/gameHistory.json");
+            JsonWriter writer = new JsonWriter("./data/testGameHistory.json");
             writer.open();
             writer.write(gh);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/gameHistory.json");
+            JsonReader reader = new JsonReader("./data/testGameHistory.json");
             gh = reader.read();
             assertEquals(2, gh.messages().size());
             assertEquals(2, gh.boards().size());
