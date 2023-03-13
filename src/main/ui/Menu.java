@@ -167,7 +167,7 @@ public class Menu {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads GameHistory from file
     private void loadGameHistory() {
         try {
             history = jsonReader.read();
