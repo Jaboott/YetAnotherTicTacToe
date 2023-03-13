@@ -52,8 +52,8 @@ public class JsonReader {
     private void addGames(GameHistory gh, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("games");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addGame(gh, nextThingy);
+            JSONObject nextGame = (JSONObject) json;
+            addGame(gh, nextGame);
         }
     }
 
