@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import model.TicTacToe;
 import org.json.*;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads gameHistory from JSON data stored in file
 public class JsonReader {
     private String source;
 

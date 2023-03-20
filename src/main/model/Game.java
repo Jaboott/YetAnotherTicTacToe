@@ -2,6 +2,7 @@ package model;
 
 import org.json.JSONObject;
 
+// Represents the game result of a tic-tac-toe game
 public class Game {
     private TicTacToe board;
     private int winner;

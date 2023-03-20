@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents all the game history of the tic-tac-toe game
 public class GameHistory {
     private List<Game> history;
 
