@@ -17,6 +17,7 @@ public class SplashScreen extends JFrame {
         this.add(panel);
         this.setSize(500,500);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 }

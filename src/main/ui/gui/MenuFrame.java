@@ -59,7 +59,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         if (e.getSource() ==  showRecord) {
             System.out.println("1");
         } else if (e.getSource() ==  playGame) {
-            System.out.println("2");
+            new TicTacToeAppFrame();
         } else if (e.getSource() ==  gameHistory) {
             System.out.println("3");
         } else if (e.getSource() ==  stopProgram) {
