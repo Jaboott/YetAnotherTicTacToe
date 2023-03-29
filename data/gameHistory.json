@@ -1,0 +1,15 @@
+{"games": [{
+    "winner": 2,
+    "message": "Player2 have won by diagonal",
+    "board": {
+        "0": "O",
+        "1": "X",
+        "2": "O",
+        "3": "X",
+        "4": "O",
+        "5": "X",
+        "6": "O",
+        "7": "",
+        "8": ""
+    }
+}]}
