@@ -1,5 +1,9 @@
 package ui.gui;
 
+import model.Game;
+import model.GameHistory;
+import model.TicTacToe;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +21,21 @@ public class MenuFrame extends JFrame implements ActionListener {
 
     JLabel title;
 
+    GameHistory history;
+
     public MenuFrame() {
+        this.history = new GameHistory();
+        initializeComponents();
+    }
+
+    public MenuFrame(GameHistory history) {
+        initializeComponents();
+        this.history = history;
+        System.out.println(history.messages());
+    }
+
+
+    private void initializeComponents() {
         this.setSize(170,210);
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -59,13 +77,14 @@ public class MenuFrame extends JFrame implements ActionListener {
         if (e.getSource() ==  showRecord) {
             System.out.println("1");
         } else if (e.getSource() ==  playGame) {
-            new TicTacToeAppFrame();
+            new TicTacToeAppFrame(history);
         } else if (e.getSource() ==  gameHistory) {
             System.out.println("3");
         } else if (e.getSource() ==  stopProgram) {
             System.out.println("4");
         } else if (e.getSource() ==  loadHistory) {
-            System.out.println("5");
+            JOptionPane.showConfirmDialog(null, "Load History?", "", JOptionPane.YES_NO_OPTION);
         }
+        this.dispose();
     }
 }

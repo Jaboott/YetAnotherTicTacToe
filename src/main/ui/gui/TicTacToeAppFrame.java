@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Game;
+import model.GameHistory;
 import model.TicTacToe;
 
 import javax.swing.*;
@@ -25,12 +27,14 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
     JLabel titleLabel;
 
     TicTacToe ticTacToe;
+    GameHistory history;
+    Game game;
 
     private int currPlayer;
     private static final String PLAYER1 = "X";
     private static final String PLAYER2 = "O";
 
-    public TicTacToeAppFrame() {
+    public TicTacToeAppFrame(GameHistory history) {
         ticTacToe = new TicTacToe();
         currPlayer = chooseFirstPlayer();
         mainPanel = new JPanel(new BorderLayout());
@@ -44,6 +48,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         mainPanel.add(titleLabel, BorderLayout.NORTH);
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
 
+        this.history = history;
         this.add(mainPanel);
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
@@ -105,10 +110,27 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         changeButtonAfterAction(e);
         if (!checkEnd()) {
             JOptionPane.showMessageDialog(null, finalMessage());
+            gameFactory(finalMessage());
+            new MenuFrame(history);
             this.dispose();
         }
         currPlayer = changePlayer(currPlayer);
 
+    }
+
+    private void gameFactory(String message) {
+        game = new Game();
+        String index = message.substring(6,7);
+        if (index.equals("1") || index.equals("2")) {
+            if (index.equals("1")) {
+                game.setWinner(1);
+            } else {
+                game.setWinner(2);
+            }
+        }
+        game.setMessage(message);
+        game.setBoard(ticTacToe);
+        history.addGame(game);
     }
 
     // EFFECTS: choose a random player
