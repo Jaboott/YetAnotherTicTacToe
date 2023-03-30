@@ -40,7 +40,6 @@ public class MenuFrame extends JFrame implements ActionListener {
         this.history = history;
     }
 
-
     private void initializeComponents() {
         this.setSize(170,210);
         panel = new JPanel();
@@ -113,10 +112,8 @@ public class MenuFrame extends JFrame implements ActionListener {
         int result = JOptionPane.showConfirmDialog(null, "Load History?", "", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             loadGameHistory();
-            new MenuFrame(history);
-        } else {
-            System.exit(0);
         }
+        new MenuFrame(history);
     }
 
     // EFFECTS: prints the win loss

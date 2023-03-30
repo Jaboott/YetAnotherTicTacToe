@@ -7,7 +7,6 @@ public class GuiHandler {
     }
 
     private void showSplashScreen() {
-        /*
         SplashScreen splashScreen = new SplashScreen();
         try {
             Thread.sleep(3000);
@@ -15,8 +14,6 @@ public class GuiHandler {
             throw new RuntimeException(e);
         }
         splashScreen.setVisible(false);
-
-         */
         new MenuFrame();
     }
 }

@@ -110,7 +110,11 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         changeButtonAfterAction(e);
         if (!checkEnd()) {
             JOptionPane.showMessageDialog(null, finalMessage());
-            gameFactory(finalMessage());
+            int result = JOptionPane.showConfirmDialog(null, "Add Game to Game History?",
+                    "", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                gameFactory(finalMessage());
+            }
             new MenuFrame(history);
             this.dispose();
         }
