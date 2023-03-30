@@ -24,10 +24,9 @@ public class MenuFrame extends JFrame implements ActionListener {
     JButton loadHistory;
 
     JPanel panel;
-
     JLabel title;
 
-    GameHistory history;
+    private GameHistory history;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -39,7 +38,6 @@ public class MenuFrame extends JFrame implements ActionListener {
     public MenuFrame(GameHistory history) {
         initializeComponents();
         this.history = history;
-        //System.out.println(history.messages());
     }
 
 
@@ -51,15 +49,17 @@ public class MenuFrame extends JFrame implements ActionListener {
         showRecord = new JButton("Show Record");
         playGame = new JButton("Play Tic-Tac-Toe");
         gameHistory = new JButton("Show Game History");
-        stopProgram = new JButton("Stop The Program");
+        stopProgram = new JButton("Quit the Game");
         loadHistory = new JButton("Load History");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+
         initializeMenu();
         initializeActionListener();
 
         this.add(panel);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -86,12 +86,13 @@ public class MenuFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==  showRecord) {
-            JOptionPane.showMessageDialog(null,     displayWinLoss());
+            JOptionPane.showMessageDialog(null, displayWinLoss());
             new MenuFrame(history);
         } else if (e.getSource() ==  playGame) {
             new TicTacToeAppFrame(history);
         } else if (e.getSource() ==  gameHistory) {
-            System.out.println("3");
+            new GameRecordFrame(history);
+            new MenuFrame(history);
         } else if (e.getSource() ==  stopProgram) {
             saveHistoryCallBack();
         } else if (e.getSource() ==  loadHistory) {
@@ -99,7 +100,6 @@ public class MenuFrame extends JFrame implements ActionListener {
         }
         this.dispose();
     }
-
 
     private void saveHistoryCallBack() {
         int result = JOptionPane.showConfirmDialog(null, "Save Game?", "", JOptionPane.YES_NO_OPTION);
