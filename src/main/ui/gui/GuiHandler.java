@@ -1,11 +1,13 @@
 package ui.gui;
 
+//Represents the gui for the splashscreen and menu
 public class GuiHandler {
 
     public GuiHandler() {
         showSplashScreen();
     }
 
+    //Shows the splash screen then the menu
     private void showSplashScreen() {
         SplashScreen splashScreen = new SplashScreen();
         try {

@@ -1,33 +1,87 @@
 package ui.gui;
 
+import model.Game;
 import model.GameHistory;
 import model.TicTacToe;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+//Represent a JFrame with the Game Record
 public class GameRecordFrame extends JFrame {
 
     JTextArea record;
     JScrollPane recordHolder;
+    ButtonGroup group;
+    JRadioButton radioButton1;
+    JRadioButton radioButton2;
+    JPanel radioPanel;
+
 
     private GameHistory history;
+    private GameHistory tieHistory;
 
+    //EFFECTS: construct a record frame
     GameRecordFrame(GameHistory history) {
         this.history = history;
-        record = new JTextArea();
-        recordHolder = new JScrollPane(record);
-        displayRecord();
+        initializeObjects();
+        initializePanel();
+        radioButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayRecord(history);
+            }
+        });
+        radioButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tieHistory = filterHistory(history);
+                displayRecord(tieHistory);
+            }
+        });
+        JOptionPane.showMessageDialog(null, recordHolder, "Game History", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    //EFFECTS: returns GameHistory with only the games that are tied
+    private GameHistory filterHistory(GameHistory history) {
+        GameHistory tempHistory = new GameHistory();
+
+        for (Game g : history.getHistory()) {
+            if (g.getWinner() == 0) {
+                tempHistory.addGame(g);
+            }
+        }
+        return tempHistory;
+    }
+
+    //EFFECTS: initializes panel
+    private void initializePanel() {
         record.setEditable(false);
         record.setLineWrap(true);
         record.setWrapStyleWord(true);
         recordHolder.setPreferredSize(new Dimension(200, 200));
-        JOptionPane.showMessageDialog(null, recordHolder, "Game History", JOptionPane.PLAIN_MESSAGE);
+
+        group.add(radioButton1);
+        group.add(radioButton2);
+        radioPanel.add(radioButton1);
+        radioPanel.add(radioButton2);
+        recordHolder.setColumnHeaderView(radioPanel);
     }
 
+    //EFFECTS: creates a new objects for the objects
+    private void initializeObjects() {
+        record = new JTextArea();
+        recordHolder = new JScrollPane(record);
+        radioPanel = new JPanel();
+        radioButton1 = new JRadioButton("Show All History");
+        radioButton2 = new JRadioButton("Show Tie");
+        group = new ButtonGroup();
+    }
 
-    // EFFECTS: prints every element in the list history
-    private void displayRecord() {
+    // EFFECTS: sets JTextArea to every element in the list history
+    private void displayRecord(GameHistory history) {
         record.setText("The history of the games:");
         for (int i = 1; i <= history.messages().size(); i++) {
             record.setText(record.getText() + ("\nGame" + i + ":\n"));
@@ -37,8 +91,8 @@ public class GameRecordFrame extends JFrame {
         }
     }
 
-    // EFFECT: prints the 2d array with spaces in between each index
-    //         prints number between 0-8 if slot is not taken
+    // EFFECT: sets JTextArea to the 2d array with spaces in between each index
+    //         sets JTextArea to number between 0-8 if slot is not taken
     private void printBoard(TicTacToe game) {
         int count = 0;
         for (int i = 0; i < 3; i++) {

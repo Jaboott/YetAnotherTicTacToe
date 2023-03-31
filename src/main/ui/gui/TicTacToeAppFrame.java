@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+//Represent the TicTacToe app on JFrame
 public class TicTacToeAppFrame extends JFrame implements ActionListener {
 
     JButton topLeft;
@@ -55,6 +56,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    //EFFECTS: initializes the buttons
     private void initializeButtons() {
         topLeft = new JButton("");
         topMid = new JButton("");
@@ -77,6 +79,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         botRight.setFont(new Font("Arial", Font.BOLD, 64));
     }
 
+    //EFFECTS: add the buttons to the panel
     private void addButtons() {
         buttonPanel.add(topLeft);
         buttonPanel.add(topMid);
@@ -89,6 +92,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         buttonPanel.add(botRight);
     }
 
+    //EFFECTS: initialize action listener to the buttons
     private void initializeActionListener() {
         topLeft.addActionListener(this);
         topMid.addActionListener(this);
@@ -122,6 +126,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
 
     }
 
+    //EFFECTS: sets the game parameter based on the message passed in
     private void gameFactory(String message) {
         game = new Game();
         String index = message.substring(6,7);
@@ -154,7 +159,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         return 1;
     }
 
-    // EFFECTS: change the given player to the next player
+    //EFFECTS: set the label to the given player to the next player
     private int changePlayer(int player) {
         if (player == 1) {
             titleLabel.setText("Player2's turn");
@@ -164,6 +169,9 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         return 1;
     }
 
+    //REQUIRE: button is a valid button
+    //MODIFY: this
+    //EFFECTS: sets the given button to either X or O
     private void updateButton(JButton button) {
         if (currPlayer == 1) {
             button.setText(PLAYER1);
@@ -172,6 +180,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS: returns true if button is already filled false otherwise
     private Boolean isFill(JButton button) {
         if (button.getText().equals("")) {
             return false;
@@ -180,6 +189,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS: returns the symbol O or X given the player
     private String getSymbol(int player) {
         if (player == 1) {
             return PLAYER1;
@@ -188,6 +198,8 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
         }
     }
 
+    //MODIFY: this
+    //EFFECTS: changes the ticTacToe board based on the user input
     private void changeButtonAfterAction(ActionEvent e) {
         updateButton((JButton) e.getSource());
         if (e.getSource() ==  topLeft) {
@@ -212,7 +224,7 @@ public class TicTacToeAppFrame extends JFrame implements ActionListener {
     }
 
     // REQUIRE: currPlayer needs to be either 1 or 2
-    // EFFECTS: outputs message for given game status
+    // EFFECTS: sets the label for given game status
     private String finalMessage() {
         String message = ticTacToe.checkStatus();
         if (message.equals("It is a tie")) {

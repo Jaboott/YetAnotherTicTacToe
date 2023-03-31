@@ -1,8 +1,6 @@
 package ui.gui;
 
-import model.Game;
 import model.GameHistory;
-import model.TicTacToe;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -15,6 +13,7 @@ import java.io.IOException;
 
 import static ui.Menu.JSON_STORE;
 
+//Represents a JFrame with a menu on it
 public class MenuFrame extends JFrame implements ActionListener {
 
     JButton showRecord;
@@ -30,16 +29,19 @@ public class MenuFrame extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    //EFFECTS: constructs a new MenuFrame with no parameter passed in
     public MenuFrame() {
         this.history = new GameHistory();
         initializeComponents();
     }
 
+    //EFFECTS: constructs a new MenuFrame with history saved
     public MenuFrame(GameHistory history) {
         initializeComponents();
         this.history = history;
     }
 
+    //EFFECTS: initialize the buttons, panel, and label for the JFrame
     private void initializeComponents() {
         this.setSize(170,210);
         panel = new JPanel();
@@ -62,6 +64,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    //EFFECTS: adds components to the menu JFrame
     private void initializeMenu() {
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         panel.add(title);
@@ -74,6 +77,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         panel.add(Box.createVerticalGlue());
     }
 
+    //EFFECTS: initialize ActionListener
     private void initializeActionListener() {
         showRecord.addActionListener(this);
         playGame.addActionListener(this);
@@ -100,6 +104,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         this.dispose();
     }
 
+    //EFFECTS: gives the user an option to save history
     private void saveHistoryCallBack() {
         int result = JOptionPane.showConfirmDialog(null, "Save Game?", "", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
@@ -108,6 +113,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         System.exit(0);
     }
 
+    //EFFECTS: gives the user an option to load history
     private void loadHistoryCallBack() {
         int result = JOptionPane.showConfirmDialog(null, "Load History?", "", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
@@ -116,7 +122,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         new MenuFrame(history);
     }
 
-    // EFFECTS: prints the win loss
+    // EFFECTS: returns the win loss in a String
     private String displayWinLoss() {
         return ("Player1 have won " + countWins1() + " and lost " + countWins2() + " times.\n"
                 + "Player2 have won " + countWins2() + " and lost " + countWins1() + " times.");

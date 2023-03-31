@@ -2,12 +2,14 @@ package ui.gui;
 
 import javax.swing.*;
 
+//Represent a splash screen
 public class SplashScreen extends JFrame {
 
     JPanel panel;
     JLabel titleLabel;
     ImageIcon icon;
 
+    //EFFECTS: shows a splash screen on a JFrame
     public SplashScreen() {
         panel = new JPanel();
         titleLabel = new JLabel();

@@ -20,6 +20,10 @@ public class GameHistory {
         history.add(game);
     }
 
+    public List<Game> getHistory() {
+        return history;
+    }
+
     // EFFECTS: returns the list of strings that represents message in the Game class
     public List<String> messages() {
         List<String> finalMessages = new ArrayList<>();
