@@ -28,3 +28,13 @@ Thu Apr 13 18:32:08 PDT 2023
 New game added
 Thu Apr 13 18:32:10 PDT 2023
 History filtered to display tie
+
+### Phase 4: Task 3
+If I had more time to work on the project, I would have cleaned up my program in terms of using more interface and
+abstract functions to help reduce the coupling for my project. From the UML diagram, it might seem obvious that there
+some classes that do not have a connection to other classes. Given more time, I would make more classes of those type so
+that it follows the single responsibility rule. 
+
+Throughout the project, I realized that my initial design of the TicTacToe is flawed. Meaning that I have over-complicated 
+a lot of the design. If I had to restart the project, I would design the TicTacToe differently so that it is simpler and
+serves only one purpose and not breaking the single responsibility rule that later made coupling very high.
