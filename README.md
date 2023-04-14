@@ -20,3 +20,11 @@ tic-tac-toe with your friend or a bot.
 previous games
 - As a user, when I start the application, I want to be given the option to load my previous games and my win-loss 
 record
+
+### Phase 4: Task 2
+Thu Apr 13 18:32:03 PDT 2023 
+New game added
+Thu Apr 13 18:32:08 PDT 2023
+New game added
+Thu Apr 13 18:32:10 PDT 2023
+History filtered to display tie

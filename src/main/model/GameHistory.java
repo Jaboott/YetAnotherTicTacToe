@@ -17,6 +17,7 @@ public class GameHistory {
     // MODIFY: this
     // EFFECTS: adds game to history
     public void addGame(Game game) {
+        EventLog.getInstance().logEvent(new Event("New game added"));
         history.add(game);
     }
 
@@ -49,6 +50,19 @@ public class GameHistory {
             pastBoards.add(i.getBoard());
         }
         return pastBoards;
+    }
+
+    //EFFECTS: returns GameHistory with only the games that are tied
+    public GameHistory filterHistory() {
+        GameHistory tempHistory = new GameHistory();
+
+        for (Game g : history) {
+            if (g.getWinner() == 0) {
+                tempHistory.addGame(g);
+            }
+        }
+        EventLog.getInstance().logEvent(new Event("History filtered to display tie"));
+        return tempHistory;
     }
 
     public JSONObject toJson() {

@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.GameHistory;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -109,6 +111,9 @@ public class MenuFrame extends JFrame implements ActionListener {
         int result = JOptionPane.showConfirmDialog(null, "Save Game?", "", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             saveGameHistory();
+        }
+        for (Event e: EventLog.getInstance()) {
+            System.out.println(e.toString());
         }
         System.exit(0);
     }

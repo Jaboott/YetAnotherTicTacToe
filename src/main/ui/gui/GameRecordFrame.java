@@ -19,13 +19,12 @@ public class GameRecordFrame extends JFrame {
     JRadioButton radioButton2;
     JPanel radioPanel;
 
-
-    private GameHistory history;
+    //private GameHistory history;
     private GameHistory tieHistory;
 
     //EFFECTS: construct a record frame
     GameRecordFrame(GameHistory history) {
-        this.history = history;
+        //this.history = history;
         initializeObjects();
         initializePanel();
         radioButton1.addActionListener(new ActionListener() {
@@ -37,24 +36,14 @@ public class GameRecordFrame extends JFrame {
         radioButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tieHistory = filterHistory(history);
+                tieHistory = history.filterHistory();
                 displayRecord(tieHistory);
             }
         });
         JOptionPane.showMessageDialog(null, recordHolder, "Game History", JOptionPane.PLAIN_MESSAGE);
     }
 
-    //EFFECTS: returns GameHistory with only the games that are tied
-    private GameHistory filterHistory(GameHistory history) {
-        GameHistory tempHistory = new GameHistory();
 
-        for (Game g : history.getHistory()) {
-            if (g.getWinner() == 0) {
-                tempHistory.addGame(g);
-            }
-        }
-        return tempHistory;
-    }
 
     //EFFECTS: initializes panel
     private void initializePanel() {
