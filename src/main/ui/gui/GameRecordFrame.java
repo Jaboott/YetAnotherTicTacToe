@@ -1,6 +1,5 @@
 package ui.gui;
 
-import model.Game;
 import model.GameHistory;
 import model.TicTacToe;
 
